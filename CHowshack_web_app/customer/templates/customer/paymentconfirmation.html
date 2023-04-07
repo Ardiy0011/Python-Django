@@ -1,0 +1,27 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<style>
+body{
+
+  background-color: white;
+}
+
+.paymentcontainer{
+  position: relative;
+  top: 30rem;
+}
+</style>
+
+<div class="paymentcontainer">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-5 col-sm-12 p-4 text-center">
+            <h1>Your payment has been Submitted!</h1>
+            
+            <a href="{% url 'index' %}">Go to the homepage</a>
+        </div>
+    </div>
+</div>
+    {% endblock content %}

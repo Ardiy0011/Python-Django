@@ -1,0 +1,26 @@
+
+{% load static %}
+
+
+  <header>
+    <div class="nav-bar">
+      <div class="logo">
+        <a href="{% url 'index' %}"> <img src="{% static 'customer/menu_images/chowblack.jpg' %}" style="position: fixed; left: 4rem;" alt=""></a>
+     </div>
+      <div class="navigation">
+        <div class="nav-items">
+          <div class="nav-close-btn"></div>
+          <a class="active" href="{% url 'index' %}">Home</a>
+          <a href="{% url 'stores' %}">Order</a>
+          <a href="{% url 'menu' %}">Our menu</a>
+         
+        </div>
+        
+      </div>
+       <div class="icons">
+        
+            <a class="contact-btn" href="{% url 'contact' %}">Contact</a>
+        </div>
+      <div class="nav-menu-btn"></div>
+    </div>
+  </header>

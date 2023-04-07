@@ -1,0 +1,24 @@
+asgiref==3.6.0
+cffi==1.15.1
+charset-normalizer==3.0.1
+cryptography==39.0.0
+dj-database-url==1.2.0
+Django==4.1.4
+django-crispy-forms==1.14.0
+django-environ==0.9.0
+django-filter==22.1
+django-heroku==0.3.1
+django-js-utils==0.0.5.dev0
+django-widget-tweaks==1.4.12
+gunicorn==20.1.0
+-e git+https://github.com/pdfminer/pdfminer.six.git@5114acdda61205009221ce4ebf2c68c144fc4ee5#egg=pdfminer.six
+Pillow==9.3.0
+psycopg2==2.9.5
+pycparser==2.21
+PyPDF2==3.0.1
+python-decouple==3.7
+python-dotenv==0.21.0
+pytz==2022.7
+sqlparse==0.4.3
+tzdata==2022.7
+whitenoise==6.3.0

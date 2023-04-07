@@ -1,0 +1,295 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+            font-family: "Arial", Serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+    
+    .box-container{
+      display: flex;
+      flex-wrap: wrap;
+      gap:1.5rem;
+    }
+    
+    .box-container .box{
+      flex: 1 1 25rem ;
+      border-radius: .5rem;
+      padding:1rem;
+      text-align: center;
+      cursor: pointer;
+      background-color: rgb(251, 251, 251);
+    }
+    
+    
+    .box-container .box h3{
+      font-size: 1rem;
+      color:#333;
+      cursor: pointer;
+    }
+    
+    .box-container .box p{
+      font-size: 1.5rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: 400;
+      color:rgb(0, 0, 0);
+      padding:1rem 0;
+      cursor: pointer;
+    }
+    .box-container .box img{
+        position: relative;
+        height: 200px;
+        width: 200px;
+        cursor: pointer;
+    }
+     .box-container .box:hover{
+      box-shadow: 0 1rem 2rem rgb(203, 178, 131);
+    }
+    
+    .box-container .box img:hover{
+       
+        padding: 0.7rem;
+        transition: 0.3s;
+    }
+    
+    .container{
+       position: relative;
+       top: 5rem auto;
+      
+        width:1200px;
+        margin:100px auto;
+}
+   
+   .form-group{
+    
+    max-width: 40rem;
+    position: relative;
+    left:7rem;
+    
+   }
+
+  .form-group input{
+  background: rgb(228, 226, 226);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  resize: vertical;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); 
+  opacity: 0.8;
+  
+
+ 
+}
+
+#shrt{
+  
+  width: 30rem;
+
+ 
+}
+
+.ord{
+  position: relative;
+  left: 54.5rem;
+  top: 2rem;
+}
+
+#submitModal{
+  padding-top: 5rem;
+}
+
+
+
+@media screen and (max-width: 1050px){
+.main-gallery h1{
+  font-size: 16px;
+ width: 22rem;
+ position: relative;
+ right: 7rem;
+}
+
+.inner-gallery{
+  width: 29.5rem;
+  position: relative;
+  right: 11rem;
+  
+}
+
+
+
+#storeoverlay1{
+
+  position: relative;
+  left: 8rem;
+
+}
+
+#storeoverlay2{
+
+position: relative;
+left: 0.2rem;
+
+}
+
+}
+
+#storeheading{
+  padding-top: 5rem;
+}
+
+
+.ord{
+  position: relative;
+  left: 7.5rem;
+  top: 2rem;
+}
+
+@media screen and (max-width: 428px){  /*=======any screen lower than 428/iphone 12 and 13=======*/
+
+
+   .long{
+    position: relative;
+    right: 5.7rem;
+}
+
+.ord{
+  position: relative;
+  left: 12.5rem;
+  top: 2rem;
+}
+
+body{
+  position: relative;
+  left: 11rem;
+}
+
+#submitModal{
+  padding-top: 8rem;
+}
+
+}
+    </style>
+
+
+
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-5">
+            
+            <form method="POST">
+                
+                {% csrf_token %}
+
+                <div class=" pt-5">
+                  <h1 id="storeheading" style="color: #1d1d23">Local</h1>
+                    {% for local in locals %}
+                    <div class="box-container"> 
+                    <div class="box">
+                      <h1> {{ local.name }}</h1>
+                    <img class="rounded" src="{{ local.image.url }}" width="150" height="100"/>
+                     
+                        <div class="row justify-content-center mt-1" id="desc">
+                                <div class="form-group form-check">   
+                              <p class="font-weight-bold pl-5" id="desc">Ghs{{ local.price }}</p>
+                              <p id="desc2">{{ local.description }}</p>
+                              <input type="checkbox" name="items[]"  class="form-check-input" value="{{ local.pk }}">
+                                </div>
+                        </div>
+                    </div>   
+                    </div>
+                    </div>
+                    </div>
+                    <hr/>
+                    
+                {% endfor %}
+               
+                
+                
+
+
+
+                    <br><br><br><br>
+
+
+
+
+             <!-- personal delivery details form -->
+<div class="long">
+            <div id="shrt" class="form-group pt-3">
+                <label for="name"> Name</label>
+                <input required class="form-control" type="text" placeholder="Insert Name" name="name" />
+            </div>
+
+            <div id="shrt" class="form-group pt-3">
+                <label for="name">Email Address</label>
+                <input required class="form-control" type="text" placeholder="............@.com" name="email" />
+            </div>
+
+            <div id="shrt" class="form-group pt-3">
+                <label for="name">Street Address</label>
+                <input required class="form-control" type="text" placeholder="........street" name="street" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div id="shrt" class="form-group pt-3">
+                        <label for="name">Region</label>
+                        <input required class="form-control" type="text" placeholder="Volta" name="region" />
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div id="shrt" class="form-group pt-3">
+                        <label for="name">City</label>
+                        <input required class="form-control" type="text" placeholder="e.g Tema" name="city" />
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div id="shrt" class="form-group pt-3">
+                        <label for="name">Zip Code</label>
+                        <input required class="form-control" type="text" placeholder="e.g 233" name="zip" />
+                    </div>
+                </div>
+
+
+                <!-- modal button and actual functions -->
+             <button type="button" style="max-width: 20rem; height: 3rem;" class="ord btn btn-dark" data-toggle="modal" data-target="#submitModal">
+                Submit Order!
+              </button>
+              <!-- <button class="btn btn-dark mt-5">Place Order!</button> -->
+            </div>
+                
+          </div>          
+
+              <!-- Modal function ankasa-->
+              <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="submitModalLabel">You sure you want to submit?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="trfue">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" data-dismiss="modal">Nope Changed my mind , Go Back</button>
+                      <button type="submit" class="btn btn-dark">Place Order!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+    
+
+
+
+{% endblock content %}

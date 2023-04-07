@@ -1,0 +1,244 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+.gallery {
+  padding: 2rem 7%;
+}
+
+.main-gallery {
+  position: relative;
+  top: 10rem;
+  right: 1rem;
+  width: 100%;
+}
+
+.main-gallery h1 {
+  text-align: center;
+  font-size: 35px;
+  padding-left: 7rem;
+}
+
+.cleft {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  position: relative;
+  right: 1rem;
+  bottom: 4rem;
+  padding-left: 2rem;
+}
+
+.image {
+  position: relative;
+  width: 80%;
+  height: 35rem;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.image__img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.image__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: 10px;
+}
+
+.image__overlay--blur {
+  backdrop-filter: blur(5px);
+}
+
+.image__overlay--primary {
+  background: #626363;
+}
+
+.image__overlay>* {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image__overlay:hover {
+  opacity: 2;
+}
+
+.image__overlay:hover>* {
+  transform: translateY(0);
+}
+
+.image__title {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.image__title2 {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.image__description {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+}
+
+@media screen and (max-width: 1070px) {
+  .main-gallery h1 {
+    font-size: 25px;
+    position: relative;
+    left: 7.5%;
+  }
+
+  .cleft {
+    justify-content: space-between;
+  }
+
+  .image {
+    width: 48%;
+    margin-bottom: 2rem;
+  }
+
+  .image:nth-child(2n+1) {
+    margin-right: 2%;
+  }
+
+  .image:nth-child(2n) {
+    margin-left: 2%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-gallery h1 {
+    font-size: 20px;
+    padding-left: 0;
+  }
+
+  .cleft {
+   position: relative;
+   left: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image {
+    width: 80%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .image:nth-child(2n+1) {
+    margin-right: 0;
+  }
+
+  .image:nth-child(2n) {
+    margin-left: 0;
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+  .main-gallery {
+    width: 100%;
+    position: relative;
+    right: 14%;
+  
+  }
+
+
+  .main-gallery h1{
+    
+    left: 40%;
+  }
+
+
+  .cleft {
+    width: 170%;
+  }
+
+  .image {
+    width: 80%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .image:nth-child(2n+1) {
+    margin-right: 0;
+  }
+
+  .image:nth-child(2n) {
+    margin-left: 0;
+  }
+.image__title{
+  display: visible;
+}
+footer{
+    position: relative;
+    left: 38%;
+   
+}
+}
+
+
+
+
+
+</style>
+
+
+<div class="main-gallery">
+  
+        <h1>what type of meal are we in the mood for today?</h1>
+        <div class="cleft">
+          
+          <div class="image">
+          <img class="image__img" src="{% static 'customer/menu_images/fried_rice.jpg' %}" alt="Bricks">
+          <a href="{% url 'order1' %}">
+            <div class="image__overlay image__overlay">
+            <div class="image__title">Local</div>
+            <p class="image__description">
+            </p>
+          </div></a>
+        </div><br><br>
+    
+        
+          <div class="image">
+          <img class="image__img" src="{% static 'customer/menu_images/background.png' %}" alt="Bricks">
+          <a href="{% url 'order2' %}">
+            <div class="image__overlay image__overlay">
+            <div class="image__title2">International</div>
+            <p class="image__description">
+              
+            </p>
+          </div> </a>
+        </div>
+      
+          
+</div>
+
+{% endblock content %}
+
+
+
+
+

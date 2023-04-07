@@ -1,0 +1,377 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+.cleft{
+    
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    right: 1rem;
+    bottom: 4rem;
+    padding-left: 2rem;
+    gap: 4rem;
+  
+  }
+  .image {
+  position: relative;
+    top:10rem;
+    right: 2rem;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    
+    
+  }
+  
+  .image__img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+    
+  }
+  
+  .image__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: 10px;
+  }
+  
+  .image__overlay--blur {
+  backdrop-filter: blur(5px);
+  }
+  
+  .image__overlay--primary {
+  background: #626363;
+  }
+  
+  .image__overlay>* {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+  }
+  
+  .image__overlay:hover {
+  opacity: 2;
+  }
+  
+  .image__overlay:hover>* {
+  transform: translateY(0);
+  }
+  
+  .image__title {
+  font-size: 4em;
+  font-weight: bold;
+  }
+  
+  
+  .image__title2{
+    font-size: 4em;
+    font-weight: bold;
+    
+  
+  }
+  .image__description {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+  }
+
+
+  #slider {
+  width: 80%;
+  max-width: 2200px;
+  height: 70vh;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+ 
+}
+
+#slider img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#slider img.active {
+  opacity: 1;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .cleft{
+    
+    display: inline !important;
+    margin: 0 auto;
+ 
+  position: relative;
+  left: 10%;
+  gap: 2rem;
+  
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+/* home section */
+.home{
+
+width: 100%;
+background-repeat: no-repeat;
+background-color: #1d1d23;
+position: relative;
+left: 22%;
+}
+
+#slider{
+
+width: 140%;
+
+}
+
+
+.order-button {
+text-align: center;
+
+position: relative;
+left: 20%;
+}
+
+.order-button a {
+color: orange;
+padding: 1.5rem 4rem;
+border: 1.5px solid orange;
+border-radius: 10px;
+font-size: 18px;
+transition: 0.5s;
+display: inline-block;
+text-decoration: none;
+}
+
+.order-button:hover{
+  padding: 2rem 5rem;
+  border: 2.5px solid orange;
+  font-size: 20px;
+}
+
+.before{
+    
+    padding: 2rem 0;
+    width: 185%;
+}
+
+.before img{
+
+    width: 100%;
+    object-fit: cover;
+}
+
+.cleft{
+    
+   
+ 
+  position: relative;
+  left: 17%;
+
+  
+  }
+
+  .enjoy-our-food{
+    background-color: #1d1d23;
+    position: relative;
+  
+    top: 40%;
+    
+  
+}
+.food-main-content{
+    width: 80%;
+    border: 4px solid white;
+    padding: 1rem;
+    position: relative;
+    left: 48%;
+    top: 20%;
+    
+}
+
+.our-menu-food{
+    position: relative;
+    left: 38%;
+    
+   
+}
+.main-menu-food{
+    padding-top: 4rem;
+}
+}
+
+  
+</style>
+
+<div class="home">
+
+          <!--image slider start-->
+          <div id="slider">
+            <img src="{% static 'customer/menu_images/placement1.jpg' %}" alt="Bfe footer">
+  
+              <img src="{% static 'customer/menu_images/jollof.jpg' %}" alt="Bfe footer">
+          
+              <img src="{% static 'customer/menu_images/placement3.jpg' %}" alt="Bfe footer">
+        
+              
+          </div>
+
+            <div class="order-button">
+            <a href="{% url 'stores' %}">order</a>
+            </div>
+        
+
+
+</div>
+
+
+    
+
+
+
+<div class="before">
+    
+    <img src="{% static 'customer/menu_images/before footer.png' %}" alt="Bfe footer">
+    <br><br><br><br>
+</div>
+
+<div class="gallery">
+
+
+        <div class="cleft">
+          <div class="image">
+          <img class="image__img" src="{% static 'customer/menu_images/Shakes.jpg' %}" alt="Bricks">
+          <a href="{% url 'drink' %}">
+            <div class="image__overlay image__overlay">
+            <div class="image__title">Drinks</div>
+            <p class="image__description">
+            </p>
+          </div></a>
+        </div>
+           
+      
+          <div class="image">
+          <img class="image__img" src="{% static 'customer/menu_images/gallery4.png' %}" alt="Bricks">
+          <a href="{% url 'break' %}">
+            <div class="image__overlay image__overlay">
+            <div class="image__title2">Breakfast</div>
+            <p class="image__description">
+              
+            </p>
+          </div> </a>
+        </div>
+
+
+
+        <div class="image">
+          <img class="image__img" src="{% static 'customer/menu_images/Jollof.jpg' %}" alt="Bricks">
+          <a href="{% url 'lunch' %}">
+            <div class="image__overlay image__overlay">
+            <div class="image__title2">Lunch</div>
+            <p class="image__description">
+              
+            </p>
+          </div> </a>
+        </div>
+
+      </div> <br><br><br><br>
+
+
+
+
+<div class="enjoy-our-food">
+
+    <div class="food-main-content">
+        <h1>enjoy our food</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa quidem sit nostrum pariatur perferendis soluta saepe nam eveniet velit exercitationem iusto, molestias sapiente laborum? Hic, eaque. Voluptatum sit incidunt ipsa.</p>
+    </div>
+
+</div>
+
+<div class="our-menu-food">
+    <h1 style="padding-right: 4rem;">Sellers</h1>
+
+    <div class="main-menu-food">
+        <div class="inner-menu-food">
+            <div class="menu-food-content">
+                <img src="{% static 'customer/menu_images/papaslogo.jpg' %}" alt="Lunch">
+                <div class="menu-food-text">
+                    <h2>Papas Pizza</h2>
+                    <p> quos animi iusto architecto aliquam dignissimos, molestiae tempora doloremque dolores repellendus! Ab, est voluptatem.</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-menu-food">
+            <div class="menu-food-content">
+                <img src="{% static 'customer/menu_images/fridays.jpg' %}" alt="Lunch">
+                <div class="menu-food-text">
+                    <h2>Fridays Restaurant Bar</h2>
+                    <p> quos animi iusto architecto aliquam dignissimos, molestiae tempora doloremque dolores repellendus! Ab, est voluptatem.</p>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-menu-food">
+            <div class="menu-food-content">
+                <img src="{% static 'customer/menu_images/rigabs.jpg' %}" alt="Lunch">
+                <div class="menu-food-text">
+                    <h2>Rigabs Eatery</h2>
+                    <p>quos animi iusto architecto aliquam dignissimos, molestiae tempora doloremque dolores repellendus! Ab, est voluptatem.</p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.querySelectorAll('#slider img');
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].classList.remove('active');
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  slides[slideIndex - 1].classList.add('active');
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+
+</script>
+{% endblock content %}
+
